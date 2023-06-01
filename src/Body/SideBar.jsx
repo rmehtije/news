@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import SearchForm from './SearchForm';
 
 function SideBar() {
   const [show, setShow] = useState(false);
@@ -19,8 +20,7 @@ function SideBar() {
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <SearchForm closeSideBar={handleClose} />
         </Offcanvas.Body>
       </Offcanvas>
     </>
