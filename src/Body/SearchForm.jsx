@@ -22,7 +22,7 @@ function SearchForm({ closeSideBar }) {
     "sentimentAggr",
     "recentActivityArticles",
   ];
-  
+
   const articlesSortBy = [
     "date",
     "rel",
@@ -32,7 +32,27 @@ function SearchForm({ closeSideBar }) {
     "socialScore",
     "facebookShares",
   ];
+
   const dataType = ["news", "pr", "blog"];
+
+  const languages = [
+    {
+      label: "English",
+      value: "eng",
+    },
+    {
+      label: "Eesti",
+      value: "est",
+    },
+    {
+      label: "Русский",
+      value: "rus",
+    },
+    {
+      label: "日本語",
+      value: "jpn",
+    },
+  ];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,6 +64,11 @@ function SearchForm({ closeSideBar }) {
       dataType: [...event.target.dataType]
         .filter((e) => e.checked)
         .map((d) => d.value),
+      lang: [...event.target.lang]
+        .filter((e) => e.selected)
+        .map((d) => d.value),
+      dateStart: event.target.dateStart.value,
+      dateEnd: event.target.dateEnd.value,
     };
 
     console.log("data", data);
@@ -98,6 +123,27 @@ function SearchForm({ closeSideBar }) {
         ))}
       </Form.Group>
 
+      <Form.Group className="mb-3">
+        <Form.Label>Language</Form.Label>
+        <Form.Select name="lang" multiple>
+          {languages.map(({ value, label }) => (
+            <option value={value} key={value}>
+              {label}
+            </option>
+          ))}
+        </Form.Select>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Date start</Form.Label>
+        <Form.Control type="date" name="dateStart" />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Date end</Form.Label>
+        <Form.Control type="date" name="dateEnd"/>
+      </Form.Group>
+    
       <Button variant="primary" type="submit">
         Close side bar
       </Button>
