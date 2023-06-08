@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import SearchForm from "./SearchForm";
+import { defaultData } from "../services/apiService";
 
 function SideBar() {
   const [show, setShow] = useState(false);
-  const [submitedData, setSubmitedData] = useState(null);
+  const [submitedData, setSubmitedData] = useState(defaultData);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleRestore = () => setSubmitedData(defaultData);
 
   return (
     <>
@@ -25,6 +27,7 @@ function SideBar() {
             closeSideBar={handleClose}
             submitedData={submitedData}
             setSubmitedData={setSubmitedData}
+            handleRestore={handleRestore}
           />
         </Offcanvas.Body>
       </Offcanvas>
