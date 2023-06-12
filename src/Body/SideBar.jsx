@@ -20,7 +20,7 @@ function SideBar() {
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Serach</Offcanvas.Title>
+          <Offcanvas.Title>Search</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <SearchForm
