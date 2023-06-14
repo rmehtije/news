@@ -4,11 +4,20 @@ import SideBar from "./SideBar";
 
 function Body() {
   const [newsList, setNewsList] = useState(null);
+  const [info, setInfo] = useState(null);
 
   return (
     <>
-      <SideBar setNewsList={setNewsList} />
-      <News newsList={newsList} setNewsList={setNewsList}/>
+      <SideBar 
+        setNewsList={setNewsList} 
+        setInfo={setInfo}
+        />
+      <News 
+        newsList={newsList} 
+        setNewsList={setNewsList}
+        info={info}
+        setInfo={setInfo}
+        />
     </>
   );
 }
