@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import DataCard from './DataCard';
 
 function DataList({ info, dataList, page, setPage }) {
-
+  console.log('DataList');
   return (
     <>
       {info && <Alert variant="primary">{info}</Alert>}

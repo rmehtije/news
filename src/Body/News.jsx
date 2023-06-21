@@ -3,8 +3,13 @@ import { getArticles } from "../services/apiService";
 import ErrorModal from "../ErrorModal";
 import { useParams } from "react-router-dom";
 import DataList from "./DataList";
+import { useSelector } from "react-redux";
 
-function News({ dataList, setDataList, setInfo, info }) {
+function News({ setInfo, info }) {
+  console.log("News");
+  const searchData = useSelector((state) => state.searchData);
+
+  const [dataList, setDataList] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [page, setPage] = useState(1);
 
@@ -12,15 +17,18 @@ function News({ dataList, setDataList, setInfo, info }) {
 
   useEffect(() => {
     getArticles({
+      ...searchData,
       articlesPage: page,
       ...(keyword ? { keyword } : {}),
     })
       .then(({ articles, info }) => {
-        articles && setDataList([...(dataList || []), ...articles.results]);
+        articles &&
+          setDataList(articles.results);
         info ? setInfo(info) : setInfo(null);
       })
       .catch((error) => setErrorMessage(error.toString()));
-  }, [setDataList, setInfo, page, keyword]);
+
+  }, [setDataList, setInfo, page, keyword, searchData]);
 
   return (
     <>

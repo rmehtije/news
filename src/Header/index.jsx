@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 
 function Header() {
+  console.log('Header');
   return (
     <Navbar bg="dark" variant="dark">
       <Container>

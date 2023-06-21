@@ -4,6 +4,7 @@ import DataModal from "./DataModal";
 import moment from "moment";
 
 function DataCard({ data }) {
+  console.log('DataCard');
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);

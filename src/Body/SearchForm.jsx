@@ -1,19 +1,19 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { getArticles } from "../services/apiService";
-import ErrorModal from "../ErrorModal";
+import { setSearchData, setDataList } from "../services/stateService";
+import { useDispatch } from 'react-redux';
 
 function SearchForm({
   closeSideBar,
   submitedData,
   setSubmitedData,
   handleRestore,
-  setDataList,
-  setInfo,
 }) {
+  console.log('SearchForm');
+  const dispatch = useDispatch();
+
   const [articlesSortDisabled, setArticlesSortDisabled] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
 
   const resultType = [
     "articles",
@@ -79,13 +79,10 @@ function SearchForm({
 
     setSubmitedData(data);
 
-    getArticles(data)
-      .then(({ articles, info }) => {
-        articles && setDataList(articles.results);
-        info ? setInfo(info) : setInfo(null);
-        closeSideBar();
-      })
-      .catch((error) => setErrorMessage(error.toString()));
+    dispatch(setSearchData(data));
+    dispatch(setDataList(null));
+    
+    closeSideBar();
   };
 
   const handleResultTypeChange = (event) => {
@@ -189,11 +186,6 @@ function SearchForm({
           Restore
         </Button>
       </Form>
-
-      <ErrorModal
-        errorMessage={errorMessage}
-        handleClose={() => setErrorMessage(null)}
-      />
     </>
   );
 }
