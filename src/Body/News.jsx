@@ -22,7 +22,10 @@ function News({ setInfo, info }) {
       ...(keyword ? { keyword } : {}),
     })
       .then(({ articles, info }) => {
-        articles && setDataList(articles.results);
+        articles &&
+          setDataList(
+            dataList ? [...dataList, ...articles.results] : articles.results
+          );
         info ? setInfo(info) : setInfo(null);
       })
       .catch((error) => dispatch(setErrorMessage(error.toString())));
