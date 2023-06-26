@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import Events from "./Events";
 
 function Body() {
-  console.log('Body');
   const [info, setInfo] = useState(null);
 
   const props = {
@@ -17,10 +16,10 @@ function Body() {
     <>
       <SideBar />
       <Routes>
-        <Route path="/" element={<News {...props} />} />
-        <Route path="/:keyword" element={<News {...props} />} />
-        <Route path="/events" element={<Events {...props} />} />
-        <Route path="/events/:keyword" element={<Events {...props} />} />
+        <Route path="/news" element={<News {...props} />} />
+        <Route path="/news/:keyword" element={<News {...props} />} />
+        <Route path="/news/events" element={<Events {...props} />} />
+        <Route path="/news/events/:keyword" element={<Events {...props} />} />
       </Routes>
     </>
   );

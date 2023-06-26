@@ -4,16 +4,15 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 
 function Header() {
-  console.log('Header');
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Link to="/" className="navbar-brand">News</Link>
+        <Link to="/news" className="navbar-brand">News</Link>
         <Nav className="me-auto">
-          <Link to="/events" className="nav-link">Events</Link>
-          <Link to="/events/Barak Obama" className="nav-link">Barak Obama Events</Link>
-          <Link to="/events/Elon Musk" className="nav-link">Elon Musk Events</Link>
-          <Link to="/Barak Obama" className="nav-link">Barak Obama News</Link>
+          <Link to="/news/events" className="nav-link">Events</Link>
+          <Link to="/news/events/Barak Obama" className="nav-link">Barak Obama Events</Link>
+          <Link to="/news/events/Elon Musk" className="nav-link">Elon Musk Events</Link>
+          <Link to="/news/Barak Obama" className="nav-link">Barak Obama News</Link>
         </Nav>
       </Container>
     </Navbar>

@@ -33,7 +33,6 @@ const BodyNews = ({ title, image, body, source, url }) => (
 const BodyEvent = ({ summary }) => <>{summary[Object.keys(summary)[0]]}</>;
 
 function DataModal({ handleClose, data }) {
-  console.log('DataModal');
   const ViewData = {
     Title: data.dateTimePub ? TitleNews : TitleEvents,
     Body: data.image ? BodyNews : BodyEvent,
